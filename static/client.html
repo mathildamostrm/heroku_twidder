@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Twidder</title>
+    <link href="/static/client.css" type="text/css" rel="stylesheet">
+    <script src="/static/client.js" type="text/javascript"></script>
+    <script id="welcome_view" type="text/view">
+        <div id="welcome">
+            <div id="left">
+                <a href="https://ida.liu.se/~TDDD97/"><img src="/static/wimage.png" height="340" /></a>
+            </div>
+            <div id="right">
+                <div id="login">
+                    <form id="loginform" action="javascript: signin()" method="POST">
+                        <h2>Login</h2>
+                        <div>
+                            <label for="email"><b>Email</b></label>
+                            <input id="email" type="text" placeholder="Enter Email" name="email" required>
+                        </div>
+                        <div>
+                            <label for="password"><b>Password</b></label>
+                            <input id="password" type="password" placeholder="Enter Password" name="password" required>
+                        </div>
+                        <div id="button_sign_in">
+                            <button type="submit" class="sign_in">Sign In</button>
+                        </div>
+                        <div id="error_sign_in"></div>
+                    </form>
+                </div>
+
+                <div id="signup">
+                    <form id="signupform" action="javascript: signup()" method="POST">
+                        <h2>Sign Up</h2>
+                        <div>
+                            <label for="email"><b>Email</b></label>
+                            <input id="set_email" type="text" placeholder="Enter Email" name="email" required>
+                        </div>
+                        <div>
+                            <label for="password"><b>Password</b></label>
+                            <input id="set_password" type="password" placeholder="Enter Password" name="password" required>
+                        </div>
+                        <div>
+                            <label for="repeat_password"><b>Repeat password</b></label>
+                            <input id="repeat_password" type="password" placeholder="Repeat password" name="repeat_password" required>
+                        </div>
+                        <div>
+                            <label for="first_name"><b>First name</b></label>
+                            <input id="first_name" type="first_name" placeholder="Enter First name" name="first_name" required>
+                        </div>
+                        <div>
+                            <label for="last_name"><b>Last name</b></label>
+                            <input id="last_name" type="last_name" placeholder="Enter Last name" name="last_name" required>
+                        </div>
+                        <div>
+                            <label for="gender"><b>Gender</b></label>
+                            <select id="gender" type="gender" name="gender" required>
+                        <option value="none">None</option>    
+                        <option value="female">Female</option>
+                        <option value="male">Male</option>
+                      </select>
+                        </div>
+                        <div>
+                            <label for="city"><b>City</b></label>
+                            <input id="city" type="city" placeholder="Enter City" name="city" required>
+                        </div>
+                        <div>
+                            <label for="country"><b>Country</b></label>
+                            <input id="country" type="country" placeholder="Enter Country" name="country" required>
+                        </div>
+                        <div id="button_sign_up">
+                            <button type="submit" class="sign_up">Sign Up</button>
+                        </div>
+                </div>
+                <div id="error_sign_up"></div>
+                </form>
+            </div>
+        </div>
+        </div>
+    </script>
+    <script type="text/view" id="profile_view">
+        <div class="tab">
+            <button class="tab_link" onclick="openTab(event, 'home')" action="javascript: personal_info()">Home</button>
+            <button class="tab_link" onclick="openTab(event, 'browse')">Browse</button>
+            <button class="tab_link" onclick="openTab(event, 'account')">Account</button>
+            <button class="tab_link" onclick="sign_out()">Sign out</button>
+        </div>
+
+        <div id="home" class="tab_content">
+            <div class="personal_info">
+                <h3>Personal Info:</h3>
+                <label id="label">Email: </label>
+                <div class="home" id="view_email"></div>
+                <label id="label">First name: </label>
+                <div class="home" id="view_first_name"></div>
+                <label id="label">Last name: </label>
+                <div class="home" id="view_last_name"></div>
+                <label id="label">Gender: </label>
+                <div class="home" id="view_gender"></div>
+                <label id="label">City: </label>
+                <div class="home" id="view_city"></div>
+                <label id="label">Country: </label>
+                <div class="home" id="view_country"></div>
+            </div>
+            <div class=post_tweet">
+            <textarea id="post_tweet" name="post_tweet" rows="4" cols="50">
+            Tweet your tweet here....
+            </textarea>
+          <div id="button_post_tweet">
+            <button type="submit" onclick="post_tweet()">Post tweet</button>
+          </div> 
+        </div>
+         <div id="home_wall">
+           <h3>My wall:</h3>
+           <div id="button_refresh_wall">
+            <button type="submit" class="refresh_wall" onclick="get_tweet()">Refresh wall</button>
+           </div>
+             <div class="tweet" id="display_wall"></div> 
+         </div>
+        </div>
+
+  <div id="browse" class="tab_content">
+        <div id="search_user">
+            <label for="search_user"><b>Find User: </b></label>
+            <input id="search_user_email" type="text" placeholder="Search by email.." name="search_user_email">
+            <button type="submit" class="search_user" onclick="search_user()">Search</button>
+            <div class="error2" id="error_no_user_found"></div>
+        </div>
+    <div class="user_info">
+          <h3 id=name_user></h3>
+            <label id="label">Email: </label>
+             <div class="browse" id="browse_email"></div>
+            <label id="label">First name: </label>
+             <div class="browse" id="browse_first_name"></div>
+           <label id="label">Last name: </label>
+             <div class="browse" id="browse_last_name"></div>
+           <label id="label">Gender: </label>
+             <div class="browse" id="browse_gender"></div>
+           <label id="label">City: </label>
+             <div class="browse" id="browse_city"></div>
+           <label id="label">Country: </label> 
+             <div class="browse" id="browse_country"></div>         
+              <textarea id="post_tweet_other" name="post_tweet_other" rows="4" cols="50">
+               Tweet your tweet here....
+              </textarea>
+             <div id="button_post_tweet_other">
+             <button id="button_post_tweet_other" type="submit" onclick="post_tweet_other()">Post tweet</button>
+             </div>        
+        <div id="browse_wall">
+          <h3>Wall:</h3>
+           <div id="button_refresh_wall_other">
+           <button type="submit" class="refresh_wall_other" onclick="refresh_wall_other()">Refresh wall</button>
+           </div>
+           <div class="tweet" id="display_wall_other"></div>
+        </div>
+    </div>
+  </div>
+
+    <div id="account" class="tab_content">
+      <h3>Change password</h3>
+        <form id="change_password_form" action="javascript: change_password()" method="POST">
+          <div>
+            <label for="old_password"><b>Password</b></label>
+            <input id="old_password" type="password" placeholder="Enter Password" name="old_password" required>
+          </div>
+          <div>
+            <label for="new_password"><b>New password</b></label>
+            <input id="new_password" type="password" placeholder="New password" name="new_password" minlength="8" required>
+          </div>
+            <div id="button_change_password">
+              <button type="submit" class="change_password">Change password</button>
+            </div> 
+              <div class="password_changed" id="password_changed"></div>
+        </form>
+    </div>
+
+    </script>
+  </head>
+
+    <body>
+      <div id="view"></div>
+    </body>
+</html>

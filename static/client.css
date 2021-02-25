@@ -1,0 +1,137 @@
+html,
+body {
+    background-color: rgb(209, 218, 223);
+    color: black;
+    text-align: center;
+    font-family: 'Courier New';
+    height: 100%;
+    margin: 0;
+}
+
+
+/*---- welcome view ----*/
+
+#welcome {
+    width: 600px;
+    height: 400px;
+    margin-top: 100px;
+    display: flex;
+}
+
+#left {
+    width: 340px;
+    height: 100%;
+    margin-right: 10px;
+}
+
+#right {
+    width: 250px;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+}
+
+#log_in {
+    background-color: white;
+}
+
+#sign_up {
+    background-color: white;
+    margin-top: 10px;
+}
+
+#login_form {
+    margin: 0;
+}
+
+#sign_up_form {
+    margin: 0;
+}
+
+#button_sign_in {
+    text-align: right;
+}
+
+#button_sign_up {
+    text-align: right;
+}
+
+.input-row {
+    display: flex;
+    justify-content:space-between;
+    margin-bottom: 3px;
+  }
+  
+  select {
+    width: 100px;
+  }
+  
+  input {
+    width: 80px;
+  }
+
+  label {
+    text-align: right;
+  }
+  
+
+
+/*---- profile view ----*/
+
+.tab_link {
+    float: left;
+    background-color: rgb(171, 173, 176);
+    color: black;
+    padding: 14px 16px;
+    font-size: large;
+    width: 25%;
+    cursor: pointer;
+    font-family: 'Courier New';
+    font-weight: bold;
+    border: solid;
+    border-color: rgb(125, 125, 152);
+    text-align: center;
+}
+
+.tab_link:hover {
+    background-color: rgb(55, 56, 58);
+    color: white;
+}
+
+.tab_content {
+    color: rgb(91, 101, 111);
+    display: none;
+    padding: 100px 20px;
+    height: 100%;
+    text-align: center;
+}
+
+#home {
+    background-color: rgb(146, 156, 169);
+}
+
+#browse {
+    background-color: rgb(146, 156, 169);
+}
+
+#account {
+    background-color: rgb(146, 156, 169);
+}
+
+#label {
+    font-weight: bold;
+    text-align: center;
+}
+
+#user_info {
+    color: black;
+    border-color: white;
+}
+
+#display_wall {
+    color: black;
+}
+
+#display_wall_other {
+    color: black;
+}
